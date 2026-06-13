@@ -1,403 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Android System Mobile Demo</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAIN</title>
 
 <style>
 body{
-  margin:0;
-  background:#000;
-  font-family:Arial, sans-serif;
-  overflow:hidden;
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#0f172a,#7c3aed);
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
 }
 
-#phone_shell{
-  width:100%;
-  max-width:400px;
-  height:90vh;
-  margin:10px auto;
-  border-radius:25px;
-  overflow:hidden;
-  background:#111;
-  box-shadow:0 0 30px rgba(0,0,0,0.8);
-  position:relative;
+/* Decorations */
+.circle{
+    position:fixed;
+    border-radius:50%;
+    background:rgba(255,255,255,0.1);
 }
 
-/* Boot Screen */
-#boot_screen{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:#000;
-  color:#0f0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  font-family:monospace;
-  font-size:18px;
-  text-align:center;
-  z-index:100;
+.c1{
+    width:200px;
+    height:200px;
+    top:50px;
+    left:50px;
 }
 
-/* Status Bar */
-#status_bar{
-  height:25px;
-  background:#000;
-  color:white;
-  font-size:12px;
-  display:flex;
-  justify-content:space-between;
-  padding:4px 8px;
+.c2{
+    width:150px;
+    height:150px;
+    bottom:50px;
+    right:50px;
 }
 
-/* Main Screen */
-#screen{
-  height:calc(100% - 25px);
-  background:#222;
-  position:relative;
+.c3{
+    width:100px;
+    height:100px;
+    top:300px;
+    right:200px;
 }
 
-/* Lock Screen */
-#lock_screen{
-  position:absolute;
-  width:100%;
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  color:white;
-  background:rgba(0,0,0,0.8);
-  z-index:10;
+/* Card */
+.card{
+    max-width:700px;
+    margin:50px auto;
+    background:rgba(255,255,255,0.08);
+    padding:30px;
+    border-radius:20px;
 }
 
-#time_display{
-  font-size:6vw;
-  margin-bottom:10px;
+h1{
+    font-size:60px;
+    margin-bottom:10px;
 }
 
-.unlock_btn{
-  padding:10px 20px;
-  border:none;
-  background:#2b6cff;
-  color:white;
-  border-radius:20px;
-  cursor:pointer;
-  font-size:4vw;
+.tiktok{
+    display:inline-block;
+    margin:20px 0;
+    padding:12px 24px;
+    border-radius:30px;
+    text-decoration:none;
+    color:white;
+    background:linear-gradient(90deg,#ff0050,#00f2ea);
 }
 
-/* Home Screen */
-#home_screen{
-  position:absolute;
-  width:100%;
-  height:100%;
-  display:none;
-  color:white;
-  z-index:5;
+.story{
+    text-align:left;
+    line-height:1.8;
+    margin-top:20px;
 }
 
-#app_grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:5%;
-  padding:5%;
-}
-
-.app_icon{
-  text-align:center;
-  cursor:pointer;
-  user-select:none;
-  touch-action: manipulation;
-}
-
-.icon_box{
-  width:20vw;
-  height:20vw;
-  background:rgba(255,255,255,0.2);
-  border-radius:15px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:6vw;
-  margin:auto;
-}
-
-#dock{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  background:rgba(0,0,0,0.5);
-  display:flex;
-  justify-content:space-around;
-  padding:3% 0;
-}
-
-.dock_icon{
-  font-size:6vw;
-  cursor:pointer;
-}
-
-/* App Window */
-#app_window{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:#111;
-  display:none;
-  color:white;
-  z-index:15;
-}
-
-.app_header{
-  background:#000;
-  padding:3%;
-  font-size:4vw;
-}
-
-.close_btn{
-  float:right;
-  cursor:pointer;
-}
-
-/* Notes */
-#notes_area{
-  width:90%;
-  height:60%;
-  margin:10px auto;
-  background:#222;
-  color:white;
-  border:none;
-  font-size:4vw;
-}
-
-/* Geometry Dash Canvas */
-#gd_canvas{
-  display:block;
-  margin:5% auto;
-  width:90%;
-  max-width:360px;
-  height:50vw;
-  background:#111;
+.credit{
+    margin-top:20px;
+    color:#ccc;
+    font-style:italic;
 }
 </style>
 </head>
 <body>
 
-<div id="phone_shell">
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+<div class="circle c3"></div>
 
-<!-- Boot Screen -->
-<div id="boot_screen">
-  <div>Booting Android System...</div>
-  <div id="boot_log" style="margin-top:20px;font-size:4vw;"></div>
-</div>
+<div class="card">
 
-<div id="status_bar">
-  <span id="clock"></span>
-  <span>📶 🔋</span>
-</div>
+<h1>☔ RAIN ☔</h1>
 
-<div id="screen">
+<p>🌧️ Добро пожаловать в мои социальные сети 🌧️</p>
 
-<div id="lock_screen">
-<div id="time_display"></div>
-<button class="unlock_btn" onclick="unlock()">Unlock</button>
-</div>
+<a class="tiktok" href="https://www.tiktok.com/@standoff_rain" target="_blank">
+🎵 TikTok: @standoff_rain
+</a>
 
-<div id="home_screen">
+<div class="story">
+<h2>🎮 Мой путь в Standoff</h2>
 
-<div id="app_grid">
-  <div class="app_icon" onclick="openApp('notes')">
-    <div class="icon_box">📝</div>Notes
-  </div>
-  <div class="app_icon" onclick="openApp('browser')">
-    <div class="icon_box">🌐</div>Browser
-  </div>
-  <div class="app_icon" onclick="openApp('calc')">
-    <div class="icon_box">🧮</div>Calc
-  </div>
-  <div class="app_icon" onclick="openApp('info')">
-    <div class="icon_box">⚙</div>Info
-  </div>
-  <div class="app_icon" onclick="openApp('geometrydash')">
-    <div class="icon_box">⬛</div>Geometry Dash
-  </div>
-</div>
+<p>
+Привет! Я Rain. Каждый матч для меня — это новый вызов, новые эмоции и возможность доказать, на что я способен.
+</p>
 
-<div id="dock">
-<div class="dock_icon" onclick="openApp('phone')">📞</div>
-<div class="dock_icon" onclick="openApp('browser')">🌐</div>
-<div class="dock_icon" onclick="openApp('notes')">📝</div>
+<p>
+За время игры было множество побед, поражений, красивых клатчей и незабываемых моментов. Каждая катка помогает мне становиться сильнее и опытнее.
+</p>
+
+<p>
+Здесь ты найдёшь мои лучшие хайлайты, игровые моменты, достижения и путь к новым целям. Спасибо каждому, кто поддерживает меня и следит за моим развитием. Это только начало! 🚀
+</p>
+
+<div class="credit">
+сделано чат гпт
 </div>
 
 </div>
 
-<div id="app_window">
-<div class="app_header">
-<span id="app_title"></span>
-<span class="close_btn" onclick="closeApp()">✕</span>
-</div>
-
-<div id="app_content"></div>
-</div>
+<p>🔥 Следи за моими хайлайтами, клипами и лучшими моментами в Standoff 🔥</p>
 
 </div>
-</div>
-
-<script>
-// Clock
-function updateClock(){
-  let d=new Date();
-  let t=d.getHours().toString().padStart(2,"0")+":"+d.getMinutes().toString().padStart(2,"0");
-  document.getElementById("clock").textContent=t;
-  document.getElementById("time_display").textContent=t;
-}
-setInterval(updateClock,1000);
-updateClock();
-
-// Unlock
-function unlock(){
-  document.getElementById("lock_screen").style.display="none";
-  document.getElementById("home_screen").style.display="block";
-}
-
-// Open App
-function openApp(name){
-  let win=document.getElementById("app_window");
-  let title=document.getElementById("app_title");
-  let content=document.getElementById("app_content");
-  win.style.display="block";
-
-  if(name==="notes"){
-    title.textContent="Notes";
-    content.innerHTML='<textarea id="notes_area">Write something...</textarea>';
-  }
-  else if(name==="browser"){
-    title.textContent="Browser";
-    content.innerHTML='<iframe src="https://example.com" style="width:100%;height:60vw;border:none;"></iframe>';
-  }
-  else if(name==="calc"){
-    title.textContent="Calculator";
-    content.innerHTML='<h2 style="padding:5%;">2 + 2 = '+(2+2)+'</h2>';
-  }
-  else if(name==="info"){
-    title.textContent="System Info";
-    content.innerHTML='<div style="padding:5%;">HTML Android Demo<br>Version 0.6</div>';
-  }
-  else if(name==="phone"){
-    title.textContent="Dialer";
-    content.innerHTML='<div style="padding:5%;font-size:5vw">📞 Call demo</div>';
-  }
-  else if(name==="geometrydash"){
-    title.textContent="Geometry Dash Mini";
-    content.innerHTML='<canvas id="gd_canvas"></canvas>';
-    startGDGame();
-  }
-}
-
-// Close App
-function closeApp(){
-  document.getElementById("app_window").style.display="none";
-}
-
-// Boot Sequence
-const bootLog=document.getElementById("boot_log");
-const bootMessages=["Initializing kernel...","Loading drivers...","Starting services...","Mounting system...","Checking memory...","Android OS ready."];
-let i=0;
-function bootStep(){
-  if(i<bootMessages.length){
-    bootLog.innerHTML+=bootMessages[i]+"<br>";
-    i++;
-    setTimeout(bootStep,600);
-  } else {
-    document.getElementById("boot_screen").style.display="none";
-    document.getElementById("lock_screen").style.display="flex";
-  }
-}
-bootStep();
-
-// Geometry Dash Mini
-function startGDGame(){
-  const canvas=document.getElementById("gd_canvas");
-  const ctx=canvas.getContext("2d");
-  // resize for mobile
-  canvas.width=canvas.offsetWidth;
-  canvas.height=canvas.offsetHeight;
-
-  let player={x:50,y:canvas.height-50,width:30,height:30,vy:0};
-  let gravity=0.6;
-  let jump=-12;
-  let obstacles=[];
-  let speed=3;
-  let score=0;
-  let gameOver=false;
-
-  function spawnObstacle(){
-    let h=Math.random()*canvas.height/3+20;
-    obstacles.push({x:canvas.width,y:canvas.height-h,width:30,height:h});
-  }
-
-  function resetGame(){
-    obstacles=[];
-    player.y=canvas.height-50;
-    player.vy=0;
-    score=0;
-    gameOver=false;
-  }
-
-  function update(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    if(!gameOver){
-      // player
-      player.vy+=gravity;
-      player.y+=player.vy;
-      if(player.y+player.height>canvas.height){
-        player.y=canvas.height-player.height;
-        player.vy=0;
-        gameOver=true;
-      }
-
-      ctx.fillStyle="cyan";
-      ctx.fillRect(player.x,player.y,player.width,player.height);
-
-      // obstacles
-      if(Math.random()<0.02)spawnObstacle();
-      for(let i=0;i<obstacles.length;i++){
-        obstacles[i].x-=speed;
-        ctx.fillStyle="red";
-        ctx.fillRect(obstacles[i].x,obstacles[i].y,obstacles[i].width,obstacles[i].height);
-
-        // collision
-        if(player.x<obstacles[i].x+obstacles[i].width &&
-           player.x+player.width>obstacles[i].x &&
-           player.y<obstacles[i].y+obstacles[i].height &&
-           player.y+player.height>obstacles[i].y){
-             gameOver=true;
-        }
-      }
-      obstacles=obstacles.filter(o=>o.x+o.width>0);
-      score++;
-      ctx.fillStyle="white";
-      ctx.font="16px Arial";
-      ctx.fillText("Score: "+score,10,20);
-    } else {
-      ctx.fillStyle="white";
-      ctx.font="14px Arial";
-      ctx.fillText("Game Over! Tap to restart",10,40);
-    }
-
-    requestAnimationFrame(update);
-  }
-
-  update();
-
-  // Jump on touch or click
-  canvas.addEventListener('touchstart',()=>{if(!gameOver)player.vy=jump; else resetGame();});
-  canvas.addEventListener('mousedown',()=>{if(!gameOver)player.vy=jump; else resetGame();});
-}
-</script>
 
 </body>
 </html>
